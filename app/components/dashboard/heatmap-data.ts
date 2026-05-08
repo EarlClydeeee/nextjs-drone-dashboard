@@ -1,0 +1,40 @@
+import type { HeatmapPoint } from "./types";
+
+export const HEATMAP_POINTS: HeatmapPoint[] = [
+  {
+    id: "choke-1",
+    label: "Bridge choke — north",
+    x: 32,
+    y: 38,
+    radius: 14,
+    intensity: 0.92,
+    sqMeters: 750,
+    estimatedTrucks: 4,
+    volumeMass: "≈ 12 t",
+    flowReductionPct: 35,
+  },
+  {
+    id: "choke-2",
+    label: "Confluence debris",
+    x: 58,
+    y: 52,
+    radius: 11,
+    intensity: 0.78,
+    sqMeters: 520,
+    estimatedTrucks: 3,
+    volumeMass: "≈ 8.4 t",
+    flowReductionPct: 22,
+  },
+  {
+    id: "choke-3",
+    label: "Channel restriction",
+    x: 71,
+    y: 34,
+    radius: 9,
+    intensity: 0.65,
+    sqMeters: 310,
+    estimatedTrucks: 2,
+    volumeMass: "≈ 4.1 t",
+    flowReductionPct: 14,
+  },
+];

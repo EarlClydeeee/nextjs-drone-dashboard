@@ -3,6 +3,25 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Brand palette */
+  --dashboard-bg: #eef3f1;
+  --dashboard-mint: #e2f0ec;
+  --dashboard-teal: #1a7a72;
+  --dashboard-teal-light: #22a99e;
+  --dashboard-forest: #0c3829;
+  --dashboard-alert: #dc2626;
+  --dashboard-alert-soft: #fef2f2;
+  --dashboard-amber: #d97706;
+  --dashboard-amber-soft: #fffbeb;
+  --dashboard-muted: #527065;
+  --dashboard-border: #d6e4de;
+  --dashboard-card: #ffffff;
+  --dashboard-shadow: 0 4px 24px rgba(15, 61, 46, 0.09);
+  --dashboard-shadow-lg: 0 8px 40px rgba(15, 61, 46, 0.14);
+
+  /* Section header accent */
+  --section-num-bg: rgba(26, 122, 114, 0.1);
 }
 
 @theme inline {
@@ -12,15 +31,37 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--dashboard-bg);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Pulse glow for live hotspots */
+@keyframes heat-pulse {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50%       { opacity: 1;    transform: scale(1.06); }
 }
+.heat-pulse { animation: heat-pulse 2.4s ease-in-out infinite; }
+
+/* Subtle scan line for the AI feed */
+@keyframes scan-line {
+  0%   { top: 0%; }
+  100% { top: 100%; }
+}
+.scan-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(34,197,169,0.6), transparent);
+  animation: scan-line 3.5s linear infinite;
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* Live blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+.live-dot { animation: blink 1.2s ease-in-out infinite; }
